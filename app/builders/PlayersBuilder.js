@@ -1,8 +1,10 @@
 var PlayerFactory = require("./../factories/PlayerFactory.js");
 
-var PlayersBuilder = {};
+function PlayersBuilder() {
 
-PlayersBuilder.makePlayers = function(game, world) {
+}
+
+PlayersBuilder.prototype.makePlayers = function(game, world) {
     var players = [];
     players.push(PlayerFactory.makeLeftPlayer(game, world));
     players.push(PlayerFactory.makeRightPlayer(game, world));

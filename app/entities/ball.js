@@ -1,5 +1,5 @@
 var Ball = function(game, world) {
-    var _speed = game.width * 1.5;
+    var _speed = game.width * 1;
 
     this.ball = world.create(game.width / 2, game.height / 2, "ball");
     this.ball.width = game.height / 20;
@@ -30,6 +30,8 @@ var Ball = function(game, world) {
 
             window.setTimeout(this.randomizeDirection.bind(this), 1000);
         }
+
+        this.ball.rotation += this.ball.body.velocity.x / (game.height / 40);
     }.bind(this);
 
     window.setTimeout(this.randomizeDirection.bind(this), 1000);

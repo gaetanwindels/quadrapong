@@ -9,6 +9,7 @@ var Player = function(game, world, x, y, color, isVertical) {
 
     this.player.width = isVertical ? height : width;
     this.player.height = isVertical ? width : height;
+    this.player.anchor.setTo(0.5, 0.5);
 
     if (isVertical) {
         this.player.body.setRectangle(height, width);

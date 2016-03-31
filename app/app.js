@@ -1,6 +1,3 @@
-/*var Player = require("./entities/player.js");
-
-var Goal = require("./entities/goal.js");*/
 var Ball = require("./entities/ball.js");
 var WallsBuilder = require("./builders/WallsBuilder.js");
 var PlayersBuilder = require("./builders/PlayersBuilder.js");
@@ -8,8 +5,6 @@ var PlayersBuilder = require("./builders/PlayersBuilder.js");
 var game = new Phaser.Game(700, 700, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 var world;
 var player;
-var player2;
-var bullets = [];
 var bulletCollisionGroup;
 var ballCollisionGroup;
 
@@ -45,22 +40,13 @@ function create() {
     game.physics.p2.updateBoundsCollisionGroup();
     
     // adding entities
-
-/*    player = world.create(game.width / 4 - 50, game.height / 2 - 25, "ball");
-    player.width = 50;
-    player.height = 50;
-    player.body.setCircle(25);*/
-    var players = PlayersBuilder.makePlayers(game, world);
+    var playersBuilder = new PlayersBuilder();
+    var players = playersBuilder.makePlayers(game, world);
     var walls = WallsBuilder.makeWalls(game, world);
     var ball = new Ball(game, world);
     ball.ball.body.setCollisionGroup(ballCollisionGroup);
     ball.ball.body.collides([ballCollisionGroup, bulletCollisionGroup]);
 
-/*    var ball = Ball(game, world);
-    player = Player(game, world);
-    var goal2 = Goal(game, world, true);
-    
-    var goal = Goal(game, world);*/
     for (var i = 0; i < walls.length; i++) {
         walls[i].body.setCollisionGroup(ballCollisionGroup);
         walls[i].body.collides([ballCollisionGroup, bulletCollisionGroup]);
@@ -70,13 +56,6 @@ function create() {
         players[i].player.body.setCollisionGroup(ballCollisionGroup);
         players[i].player.body.collides([ballCollisionGroup, bulletCollisionGroup]);
     }
-    
-
-/*
-    player.body.collides([ballCollisionGroup, bulletCollisionGroup]);
-    player.body.setCollisionGroup(ballCollisionGroup);
-    ball.body.setCollisionGroup(ballCollisionGroup);*/
-    //var cursors = game.input.keyboard.createCursorKeys();
 }
 
 function update() {
