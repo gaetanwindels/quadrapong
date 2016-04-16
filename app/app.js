@@ -12,11 +12,11 @@ function preload() {
     game.load.image('ball', 'assets/ball.png');
     game.load.image('bullet', 'assets/bullet.png');
     game.load.image('goal', 'assets/goal.jpg');
-    game.load.image('wall', 'assets/grey.jpg');
+    game.load.image('wall', 'assets/white.jpg');
     game.load.image('blue', 'assets/blue.jpg');
-    game.load.image('yellow', 'assets/yellow.png');
-    game.load.image('green', 'assets/blue.png');
     game.load.image('bg', 'assets/battlefield.jpg');
+    game.load.image('yellow', 'assets/yellow.jpg');
+    game.load.image('green', 'assets/green.jpg');
     //game.load.spritesheet('ball', 'assets/ball.png', 50, 50);
 }
 

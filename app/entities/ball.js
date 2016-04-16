@@ -1,13 +1,14 @@
 var Ball = function(game, world) {
-    var _speed = game.width * 1;
+    var _speed = game.width * 1.5;
 
-    this.ball = world.create(game.width / 2, game.height / 2, "ball");
-    this.ball.width = game.height / 20;
-    this.ball.height = game.height / 20;
+    this.ball = world.create(game.width / 2, game.height / 2, "wall");
+    this.ball.width = game.height / 23;
+    this.ball.height = game.height / 23;
     this.ball.body.mass = 1;
     this.ball.body.setCircle(game.height / 40);
     this.ball.body.collideWorldBounds = false;
     this.ball.body.damping = 0;
+    this.ball.body.fixedRotation = true;
 
     /**
      * Randomizes y and x velocities
@@ -35,7 +36,8 @@ var Ball = function(game, world) {
             this.randomizeDirection();
         }
 
-        this.ball.rotation += this.ball.body.velocity.x / (game.height / 40);
+        //this.ball.rotation = this.ball.body.velocity.x / (game.height / 40);
+        this.ball.angle = 0;
     }.bind(this);
 
     window.setTimeout(this.randomizeDirection.bind(this), 1000);
