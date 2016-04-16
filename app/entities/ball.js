@@ -28,7 +28,11 @@ var Ball = function(game, world) {
             this.ball.body.velocity.x = 0;
             this.ball.body.velocity.y = 0;
 
-            window.setTimeout(this.randomizeDirection.bind(this), 1000);
+            //window.setTimeout(this.randomizeDirection.bind(this), 1000);
+        }
+        
+        if (this.ball.body.velocity.x == 0 && game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
+            this.randomizeDirection();
         }
 
         this.ball.rotation += this.ball.body.velocity.x / (game.height / 40);
